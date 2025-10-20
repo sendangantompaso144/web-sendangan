@@ -1,0 +1,53 @@
+{
+  "perangkatDesa": [
+    {
+      "nama": "Johny R. Mandagi",
+      "jabatan": "Kepala Desa",
+      "foto": "/images/foto/kepala_desa.jpg"
+    },
+    {
+      "nama": "Maria S. Wenas",
+      "jabatan": "Sekretaris Desa",
+      "foto": "/images/foto/sekdes.jpg"
+    }
+  ],
+
+  "programDesa": [
+    {
+      "judul": "Digitalisasi & Website Desa",
+      "deskripsi": "Pembuatan website resmi desa sebagai media informasi dan dokumentasi.",
+      "gambar": "/images/dokumentasi/program_web.jpg"
+    },
+    {
+      "judul": "Gotong Royong Bersih Desa",
+      "deskripsi": "Kegiatan bulanan membersihkan jalan utama dan area publik.",
+      "gambar": "/images/dokumentasi/gotong_royong.jpg"
+    }
+  ],
+
+  "ceritaWarga": [
+    {
+      "nama": "Oma Lina",
+      "usia": 78,
+      "kutipan": "Dulu desa ini hampir digabung, tapi kami tetap bertahan.",
+      "foto": "/images/foto/oma_lina.jpg"
+    },
+    {
+      "nama": "Rico Senduk",
+      "usia": 22,
+      "kutipan": "Meski kerja di kota, saya tetap pulang untuk kegiatan desa.",
+      "foto": "/images/foto/rico.jpg"
+    }
+  ],
+
+  "statistik": {
+    "jumlahPenduduk": 230,
+    "jumlahRT": 3,
+    "luasWilayahHa": 85,
+    "proporsiUsia": {
+      "anakAnak": 18,
+      "dewasa": 62,
+      "lansia": 20
+    }
+  }
+}

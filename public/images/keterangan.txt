@@ -1,0 +1,5 @@
+Keterangan folder:
+- Dokumentasi: berisi file-file foto dokumentasi baik itu kegiatan warga, acara, maupun informasi penting lainnya.
+- hero: berisi gambar hero yang digunakan pada halaman utama website.
+- foto: berisi foto-foto (profil) perangkat desa, warga atau anggota komunitas.
+- maps: berisi file-file gambar peta lokasi desa atau area tertentu yang relevan dengan komunitas.
