@@ -66,7 +66,7 @@ const pieStyle = statistik
 	: "";
 ---
 <BaseLayout title="Desa Sendangan | Beranda" description="Beranda website resmi Desa Sendangan, Tompaso">
-	<section class="hero" data-animate>
+	<section class="hero" data-animate style="--hero-figure: url('/images/hero/rumah-transparan.png')">
 		<div class="container hero__grid">
 			<div class="hero__content">
 				<span class="eyebrow">Selamat Datang</span>
@@ -96,7 +96,6 @@ const pieStyle = statistik
 					</div>
 				</div>
 			</div>
-			<div class="hero__visual" role="img" aria-label="Panorama Desa Sendangan"></div>
 		</div>
 	</section>
 
@@ -130,8 +129,8 @@ const pieStyle = statistik
 	<section id="tentang" data-section data-animate>
 		<div class="container about">
 			<div class="section-heading">
-				<span class="eyebrow">Tentang Desa</span>
-				<h2>Desa kecil di tengah Tompaso yang bertahan dengan kebersamaan</h2>
+				<span class="eyebrow">Selamat Datang</span>
+				<h2>Website Desa Sendangan</h2>
 				<p>
 					Sendangan adalah desa yang tumbuh di lereng pegunungan Tompaso. Meskipun jumlah penduduknya sedikit, desa
 					ini menyimpan sejarah perjuangan mempertahankan identitas di tengah laju modernisasi. Kehangatan terasa dari
@@ -451,15 +450,28 @@ const pieStyle = statistik
 		}
 
 		.hero {
+			--hero-figure: none;
+			position: relative;
 			padding-top: clamp(4rem, 10vw, 6rem);
-			padding-bottom: clamp(3rem, 8vw, 5rem);
+			padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+			background-color: #d7ebff;
+			background-image: var(--hero-figure), linear-gradient(#d7ebff, #d7ebff);
+			background-repeat: no-repeat, no-repeat;
+			background-size: cover, cover;
+			background-position: center, center;
+			box-shadow: inset 0 -1px 0 rgba(38, 50, 56, 0.08);
+			color: var(--color-text);
+			overflow: hidden;
 		}
 
 		.hero__grid {
 			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-columns: minmax(0, 560px);
 			gap: clamp(2rem, 6vw, 4rem);
 			align-items: center;
+			justify-content: flex-start;
+			position: relative;
+			z-index: 1;
 		}
 
 		.hero__content p {
@@ -494,23 +506,9 @@ const pieStyle = statistik
 			color: var(--color-text);
 		}
 
-		.hero__visual {
-			min-height: clamp(18rem, 40vw, 24rem);
-			border-radius: var(--radius-large);
-			background-image: linear-gradient(160deg, rgba(144, 202, 249, 0.65), rgba(255, 224, 130, 0.25)),
-				url("/images/hero/panorama_sendangan.jpg");
-			background-size: cover;
-			background-position: center;
-			box-shadow: var(--shadow-soft);
-			position: relative;
-		}
-
-		.hero__visual::after {
-			content: "";
-			position: absolute;
-			inset: 1rem;
-			border-radius: var(--radius-large);
-			border: 1px solid rgba(255, 255, 255, 0.55);
+		.hero__content {
+			max-width: 560px;
+			text-shadow: 0 0 10px rgba(215, 235, 255, 0.9), 0 0 2px rgba(215, 235, 255, 0.85);
 		}
 
 		.section-toc {
@@ -642,6 +640,10 @@ const pieStyle = statistik
 
 		.section-toc__panel[data-open="true"] {
 			animation: fade-in 0.2s ease;
+		}
+
+		.section-toc + section {
+			padding-top: clamp(2.5rem, 6vw, 4.25rem);
 		}
 
 		@keyframes fade-in {
@@ -843,10 +845,6 @@ const pieStyle = statistik
 				grid-template-columns: 1fr;
 			}
 
-			.hero__visual {
-				order: -1;
-			}
-
 			.hero__meta {
 				grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 			}
@@ -859,6 +857,7 @@ const pieStyle = statistik
 		@media (max-width: 720px) {
 			.hero {
 				padding-top: 3.5rem;
+				padding-bottom: clamp(2rem, 12vw, 3.25rem);
 			}
 
 			.hero__content h1 {
