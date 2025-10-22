@@ -291,11 +291,22 @@ const pieStyle = statistik
 		</div>
 	</section>
 
+	<button
+		class="back-to-top"
+		type="button"
+		aria-label="Kembali ke atas"
+		data-back-to-top
+		hidden
+	>
+		<span class="back-to-top__icon" aria-hidden="true"></span>
+	</button>
+
 	<script is:inline>
 		const sectionElements = document.querySelectorAll("[data-section]");
 		const tocToggle = document.querySelector("[data-toc-toggle]");
 		const tocPanel = document.querySelector("[data-toc-panel]");
 		const chips = new Map();
+		const backToTopButton = document.querySelector("[data-back-to-top]");
 
 		const setTocState = (open) => {
 				if (!tocToggle || !tocPanel) return;
@@ -334,6 +345,23 @@ const pieStyle = statistik
 		});
 
 			// Default closed on load (no action needed)
+
+			const updateBackToTop = () => {
+				if (!backToTopButton) return;
+				const shouldShow = window.scrollY > 220;
+				if (shouldShow) {
+					backToTopButton.removeAttribute("hidden");
+				} else {
+					backToTopButton.setAttribute("hidden", "");
+				}
+			};
+
+			backToTopButton?.addEventListener("click", () => {
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			});
+
+			window.addEventListener("scroll", updateBackToTop);
+			updateBackToTop();
 
 		if ("IntersectionObserver" in window) {
 			const navObserver = new IntersectionObserver(
@@ -380,6 +408,46 @@ const pieStyle = statistik
 	<style>
 		[hidden] {
 			display: none !important;
+		}
+
+		.back-to-top {
+			position: fixed;
+			right: clamp(1.25rem, 3vw, 2rem);
+			bottom: clamp(1.25rem, 4vw, 2.5rem);
+			width: 52px;
+			height: 52px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border: none;
+			border-radius: var(--radius-medium);
+			background: rgba(255, 255, 255, 0.92);
+			box-shadow: 0 20px 32px -24px rgba(38, 50, 56, 0.7);
+			color: var(--color-text);
+			cursor: pointer;
+			transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+			z-index: 180;
+		}
+
+		.back-to-top:hover,
+		.back-to-top:focus-visible {
+			transform: translateY(-3px);
+			background: linear-gradient(135deg, rgba(144, 202, 249, 0.35), rgba(255, 224, 130, 0.35));
+			box-shadow: 0 26px 40px -26px rgba(38, 50, 56, 0.75);
+		}
+
+		.back-to-top:focus-visible {
+			outline: 3px solid rgba(144, 202, 249, 0.55);
+			outline-offset: 3px;
+		}
+
+		.back-to-top__icon {
+			width: 18px;
+			height: 18px;
+			border-top: 3px solid currentColor;
+			border-left: 3px solid currentColor;
+			transform: rotate(45deg);
+			margin-top: 5px;
 		}
 
 		.hero {
