@@ -65,10 +65,10 @@ Rn condition - Workspace structure:
 │   │   ├── CardProgram.astro
 │   │   ├── Footer.astro
 │   │   ├── GalleryGrid.astro
+│   │   ├── index.astro
 │   │   └── Header.astro
 │   ├── data/
 │   │   └── data.json
-│   ├── index.astro
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   ├── pages/
