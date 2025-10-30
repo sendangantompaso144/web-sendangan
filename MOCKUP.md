@@ -1,110 +1,127 @@
-## 1. Halaman Utama (index.astro)
+## 🔧 Rekomendasi Revisi Struktur dan Konten Halaman
 
-> Satu halaman panjang berisi seluruh konten utama yang diakses lewat scroll.
-> Semua informasi penting desa ditampilkan secara ringkas, padat, dan visual.
+### 1. Halaman Utama (`index.astro`)
 
-**Section dan Kontennya:**
+Revisi agar lebih “bercerita” dan fokus ke identitas serta partisipasi warga, bukan potensi besar yang mungkin tak ada.
 
-### 1.1. Hero Section
-- Foto latar utama (panorama desa / kantor desa).
-- Nama & logo desa.
-- Tagline (misalnya: “Desa Kecil dengan Cerita Besar”).
-- Tombol ajakan: “Kenali Kami” → scroll ke bawah.
-### 1.2. Tentang Desa (Profil Singkat)
-- Narasi pendek: sejarah singkat, lokasi geografis, dan identitas.
-- Foto kantor desa atau warga.
-- Kutipan atau pernyataan kepala desa singkat.
-### 1.3. Data Singkat & Statistik
-- Tabel/infografik kecil (jumlah penduduk, luas wilayah, rasio lansia, jumlah RT).
-- Peta administratif kecil (hasil dari rekan PWK).
-- Desain ringan berbentuk card/grid.
-### 1.4. Cerita & Identitas Desa
-- Paragraf singkat yang menggambarkan karakter unik desa:
-> “Desa kecil di tengah dataran Tompaso yang bertahan di antara perkembangan kota.”
-- Satu-dua foto human interest (oma-oma, anak bermain, warga bekerja).
-- Kutipan warga: “Kami ingin desa ini tetap hidup walau kecil.”
-### 1.5. Program & Inisiatif Desa
-#### 3–4 kartu kegiatan utama desa:
-- Program KKT
-- Gotong royong bersih desa setiap hari jumat
-- dan lainnya
-Tombol: “Lihat Semua Program” → link ke /program.
-### 1.6. Galeri Kegiatan
-- Grid 6–8 foto kegiatan (statis).
-- Link “Lihat Galeri Lengkap” → /galeri.
-### 1.7. Peta & Lokasi
-- Peta administratif atau lokasi desa (gambar statis dari ArcGIS).
-- Alamat kantor desa, jam pelayanan, dan link WhatsApp.
-### 1.8. Footer
-- Navigasi ke halaman lain: Profil | Program | Galeri | Data | Cerita | Kontak.
-- Credit: “© 2025 KKT 144 UNSRAT Desa Sendangan, Tompaso”
+**Segmen-scroll yang disarankan:**
 
-## 2. Halaman Profil Desa (/profil)
-> Menampilkan informasi identitas dan sejarah secara lengkap
+1. **Hero Section**
 
-**Isi dan Section:**
-- Sejarah Desa
-- Visi & Misi: dalam poin-poin
-- Letak Geografis & Batas Wilayah: Tabel + Peta ArcGIS
-- Struktur Pemerintahan Desa: Foto dan nama perangkat
-- Fasilitas Umum: Daftar fasilitas dasar (Balai desa, posyandu, tempat ibadah)
+   * Gambar besar atau video pendek (contoh: lanskap desa ringan, warga yang tertawa, balai desa)
+   * Judul besar: Nama Desa + tagline seperti: *“Desa kecil, kisah besar”* atau *“Kami tetap berdiri, bersama warga”*
+   * Tombol CTA: *“Kenali Desa Kami”* yang scroll ke “Tentang Desa”
 
-## 3. Halaman Program dan Kegiatan (/program)
-> Dokumentasi kegiatan sosial dan inisiatif warga (statis, tanpa kalender dinamis)
+2. **Profil Singkat Desa**
 
-**Isi dan Section:**
-#### Program Unggulan Desa:
-- Gotong Royong Bersih Lingkungan
-- Kegiatan KKT 144 UNSRAT
-#### Program Kolaborasi KKT 144 UNSRAT:
-Setiap program dijelaskan singkat dengan foto pendukung.
-- Bak Sampah
-- KKT Mengajar
-- Website Desa
-- Penitikan Google Maps
-- Senam Lansia
+   * Ringkasan sejarah desa: “Desa X berdiri tahun …, sempat hampir digabung, namun tetap eksis”
+   * Peta wilayah kecil atau ilustrasi (gambar statis)
+   * Kalimat ajakan: misalnya “Mari kita jaga warisan dan komunitas kita”
 
-## 4. Halaman Galeri (/galeri)
-> Visualisasi kehidupan desa dalam bentuk foto-foto dokumentasi
+3. **Data Singkat Desa (Infografik)**
 
-**Isi dan Section:**
-- Galeri Kegiatan: Kegiatan sosial, KKT, Gotong royong
-- Galeri Warga: Potret Lansia, anak-anak, keluarga
-- Galeri Lingkungan: Pemandanngan, fasilitas desa, jalan utama
+   * Misalnya: jumlah warga lansia, jumlah RT, persentase migrasi anak ke kota, jumlah gotong-royong per bulan (meskipun kecil)
+   * Ikon sederhana + angka besar + teks pendek
 
-## 5. Halaman Data & Statistik (/data)
-> Menampilkan data spasial & sosial secara visual dan sederhana
-**Isi dan Section:**
-- Data umum: Luas wilayah, jumlah penduduk, jumlah RT/RW.
-- Statistik Sosial: pie chart statis usia penduduk (anak, dewasa, lansia).
-- Peta Fasilitas & Infrastruktur: gambar ArcGIS dengan ikon fasilitas
-- Sumber data: Keterangan "Sumber: Pemerintah Desa Sendangan, Tompaso, 2025"
+4. **Cerita & Identitas Desa**
 
-## 6. Halaman Cerita Warga (/cerita)
-> Fokus pada sisi human interest - cerita hidup, tradisi, dan nilai sosial. Disajikan dalam foto atau embedded video youtube.
-**Isi dan Section:**
-- Cerita Lansia: wawancara singkat dengan oma-oma tentang sejarah desa.
-- Cerita Generasi Muda: anak muda yang sekolah di kota tapi tetap bangga akan desanya.
-- Kutipan Inspiratif: Kalimat-kalimat pendek dari warga
+   * Cerita kehidupan sehari-hari: lansia, anak muda pulang kampung, gotong-royong
+   * Kutipan warga (oma-oma) atau anak yang sudah merantau
+   * “Mengapa desa kecil ini tetap bertahan” sebagai narasi unik
 
-## 7. Halaman Kontak (/kontak)
-> Informasi resmi dan sarana komunikasi publik
-**Isi dan Section:**
-- Alamat Kantor Desa Lengkap
-- Jam Pelayanan
-- Kontak (email, WA, Instagram)
-- Peta Statis Kecil (ArcGIS atau Google Maps screenshot)
-- Link cepat ke media sosial atau pesan langsung.
+5. **Kegiatan & Dokumentasi**
 
-## 8. Halaman Behind the Project (/tentang atau /kkt)
-> Menjelaskan bagaimana program kerja dibuat oleh mahasiswa
-**Isi dan Section:**
-- Profil Singkat tim KKT 144 UNSRAT
-- Tujuan pembuatan website: "Sebagai bentuk kontribusi dalam pengenalan dan pelestarian identitas desa."
-- Foto tim & proses pembuatan (coding, dokumentasi, diskusi dengan warga).
-- Ucapan terima kasih kepada warga desa dan pihak terkait.
+   * Grid foto (3-4 item) dari kegiatan nyata: gotong-royong, kelas lansia, mahasiswa KKT di desa
+   * Link ke halaman “Galeri Lengkap”
 
-## Navigasi Akhir (Navbar)
-```
-Home | Profil | Program | Galeri | Data | Cerita | Kontak | KKT
-```
+6. **Inisiatif & Program Desa**
+
+   * Kartu kecil tiap inisiatif: contoh: “Website Desa oleh Tim KKT”, “Kelas Digital Lansia”, “Arsip Sejarah Warga”
+   * Tombol “Lihat Semua Program”
+
+7. **Peta & Kontak**
+
+   * Gambar peta statis atau ilustrasi peta desa
+   * Alamat kantor desa, nomor WhatsApp, email, jam pelayanan
+   * Link ke halaman Kontak
+
+8. **Footer**
+
+   * Navigasi singkat (Profil | Program | Galeri | Data | Cerita | Kontak)
+   * Hak cipta: “© 2025 Desa X — Dibangun oleh Tim KKT”
+
+### 2. Halaman Profil Desa (`/profil`)
+
+Lebih detail tentang siapa, apa dan mengapa.
+
+**Section yang direvisi:**
+
+* Sejarah lengkap dan kisah “nyaris dibubarkan”
+* Visi & Misi yang sederhana namun menggugah
+* Letak geografis & batas wilayah (meskipun kecil)
+* Struktur pemerintahan (foto kepala desa & perangkat)
+* Peta wilayah (gambar)
+* Statistik demografis dasar: usia, lansia, migrasi (jika data tersedia)
+
+### 3. Halaman Program & Kegiatan (`/program`)
+
+Karena potensi besar mungkin kurang, maka fokus ke **kegiatan sosial & partisipasi warga**.
+
+**Section:**
+
+* Daftar program dengan kartu: foto + judul + deskripsi singkat
+* Contoh: “Gotong Royong Bulanan”, “Kelas Digital Lansia”, “Dokumentasi Sejarah – Wawancara Warga”, “Website Desa & Digitalisasi”
+* Tidak harus banyak, tapi tiap kartu punya cerita kecil
+
+### 4. Halaman Galeri (`/galeri`)
+
+Lebih ringan dan visual.
+
+**Section:**
+
+* Grid foto responsif (4-6 foto per row pada desktop)
+* Kategori opsional: “Kehidupan Warga”, “Kegiatan Bersama”, “Arsip Perubahan”
+* Setiap foto bisa klik untuk lightbox (foto besar) — statis
+
+### 5. Halaman Data & Statistik (`/data`)
+
+Karena website statis dan data mungkin terbatas.
+
+**Section:**
+
+* Sekumpulan card atau grafik simpel (SVG atau gambar): “Jumlah Lansia”, “Jumlah RT”, “Persentase Migrasi Anak”, “Rata-Rata Usia”
+* Sarana & prasarana: balai desa, posyandu, jalan utama — bisa foto + teks
+* Narasi kecil: “Meski kecil, kami tetap menjaga pelayanan dasar”
+
+### 6. Halaman Cerita Warga (`/cerita`)
+
+Menjadi bagian yang membedakan website Anda.
+
+**Section:**
+
+* Wawancara mini dengan oma-oma: foto + kutipan
+* Cerita anak muda yang “meninggalkan” desa tapi tetap peduli
+* Foto + teks narasi singkat (“Dulu sini…” / “Kini kami…”)
+
+### 7. Halaman Kontak (`/kontak`)
+
+Sederhana dan jelas.
+
+**Section:**
+
+* Alamat kantor desa + jam pelayanan
+* Nomor WA / email
+* Link ke media sosial (jika ada)
+* Catatan: karena statis, tidak perlu form yang kompleks — bisa mailto atau link WA
+
+---
+
+## ✅ Catatan Khusus dan Rekomendasi
+
+* Karena potensi fisik mungkin terbatas, fokuslah **kisah manusia, komunitas, dan partisipasi** — ini bisa menjadi kekuatan naratif Anda.
+* Hindari menampilkan halaman atau bagian yang meminta “potensi besar” jika itu belum ada — lebih baik **jujurnya** “kami masih membangun bersama warga”.
+* Gunakan foto-warga dan kegiatan nyata agar website terasa autentik dan tidak sekadar promosi kosong.
+* Karena menggunakan Astro/GitHub Pages: pastikan semua konten statis dan mudah dikelola (Markdown + folder konten).
+* Pastikan navigasi mudah, tiap halaman minimal namun padat dengan nilai storytelling.
+
+---

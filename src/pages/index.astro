@@ -66,7 +66,7 @@ const pieStyle = statistik
 	: "";
 ---
 <BaseLayout title="Desa Sendangan | Beranda" description="Beranda website resmi Desa Sendangan, Tompaso">
-	<section class="hero" data-animate style="--hero-figure: url('/images/hero/rumah-transparan.png')">
+	<section class="hero" data-animate style="--hero-figure: url('/images/hero/rumah-transparan.jpg')">
 		<div class="container hero__grid">
 			<div class="hero__content">
 				<span class="eyebrow">Selamat Datang</span>
@@ -75,26 +75,6 @@ const pieStyle = statistik
 					Berada di dataran Tompaso, Desa Sendangan adalah komunitas kecil yang berpegang pada semangat gotong royong.
 					Kami merawat identitas desa, mengarsipkan cerita warga, dan membuka ruang kolaborasi bagi generasi muda.
 				</p>
-				<div class="hero__actions">
-					<a class="button button--primary" href="#tentang">Kenali Kami</a>
-					<a class="button button--ghost" href="/profil">Lihat Profil Desa</a>
-				</div>
-				<div class="hero__meta surface" data-animate>
-					<div>
-						<span class="hero__meta-label">Jumlah Penduduk</span>
-						<span class="hero__meta-value">
-							{statistik ? numberFormatter.format(statistik.jumlahPenduduk) : "-"}
-						</span>
-					</div>
-					<div>
-						<span class="hero__meta-label">Jumlah RT</span>
-						<span class="hero__meta-value">{statistik ? statistik.jumlahRT : "-"}</span>
-					</div>
-					<div>
-						<span class="hero__meta-label">Luas Wilayah</span>
-						<span class="hero__meta-value">{statistik ? `${statistik.luasWilayahHa} ha` : "-"}</span>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
@@ -460,7 +440,7 @@ const pieStyle = statistik
 			background-size: cover, cover;
 			background-position: center, center;
 			box-shadow: inset 0 -1px 0 rgba(38, 50, 56, 0.08);
-			color: var(--color-text);
+			color: #ffffff;
 			overflow: hidden;
 		}
 
@@ -508,7 +488,19 @@ const pieStyle = statistik
 
 		.hero__content {
 			max-width: 560px;
-			text-shadow: 0 0 10px rgba(215, 235, 255, 0.9), 0 0 2px rgba(215, 235, 255, 0.85);
+			color: inherit;
+		}
+
+		.hero__content :is(.eyebrow, h1, p) {
+			/* Provide a subtle dark outline to keep the white text legible over imagery */
+			color: inherit;
+			-webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.75);
+			text-shadow:
+				-1px -1px 0 rgba(0, 0, 0, 0.85),
+				1px -1px 0 rgba(0, 0, 0, 0.85),
+				-1px 1px 0 rgba(0, 0, 0, 0.85),
+				1px 1px 0 rgba(0, 0, 0, 0.85),
+				0 0 6px rgba(0, 0, 0, 0.45);
 		}
 
 		.section-toc {
