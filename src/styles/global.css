@@ -5,6 +5,8 @@
 :root {
   /* Colors */
   --color-primary: #90CAF9;
+  /* Header height used when header is fixed */
+  --header-height: 64px;
   --color-secondary: #E3F2FD;
   --color-accent: #FFE082;
   --color-text: #263238;
@@ -97,6 +99,11 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+}
+
+/* When header is fixed, add top padding to main so content isn't hidden */
+.has-fixed-header main {
+  padding-top: var(--header-height);
 }
 
 /* Section Spacing */

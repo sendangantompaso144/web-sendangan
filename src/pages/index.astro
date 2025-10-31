@@ -222,47 +222,35 @@ const formatRupiah = (number: number) => {
     </div>
   </section>
 
-  <!-- APBD Section -->
-  <section class="budget-section bg-secondary">
+  <!-- Potensi Desa Section -->
+  <section class="potensi-section">
     <div class="container">
-      <div class="budget-layout">
-        <div class="budget-icon" data-scroll-reveal>
-          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-            <path d="M16.24 7.76a6 6 0 0 1-8.49 8.49"/>
-          </svg>
+      <div class="section-header text-center" data-scroll-reveal>
+        <h2>Potensi Desa</h2>
+        <p class="section-description">Potensi dan peluang Desa Sendangan</p>
+      </div>
+
+      <div class="potensi-grid">
+        <div class="potensi-card card" data-scroll-reveal>
+          <div class="potensi-icon">🌊</div>
+          <h3>Kolam Air Panas</h3>
+          <p>Direncanakan — Wisata</p>
         </div>
-        
-        <div class="budget-content" data-scroll-reveal>
-          <h2>APBDes Desa Sendangan</h2>
-          <p class="budget-subtitle">Transparansi Anggaran Pendapatan dan Belanja Desa</p>
-          
-          <div class="budget-stats">
-            <div class="budget-stat">
-              <p class="budget-stat-label">Total Anggaran</p>
-              <h3 class="budget-stat-value">{formatRupiah(apbdData.totalAnggaran)}</h3>
-            </div>
-            
-            <div class="budget-stat">
-              <p class="budget-stat-label">Realisasi</p>
-              <h3 class="budget-stat-value text-primary">{formatRupiah(apbdData.realisasi)}</h3>
-            </div>
-            
-            <div class="budget-stat">
-              <p class="budget-stat-label">Persentase Realisasi</p>
-              <h3 class="budget-stat-value">{apbdData.persentaseRealisasi}%</h3>
-            </div>
-          </div>
-          
-          <a href="/transparansi" class="btn btn-accent mt-2">
-            Lihat Detail Transparansi
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+
+        <div class="potensi-card card" data-scroll-reveal>
+          <div class="potensi-icon">🛍️</div>
+          <h3>UMKM Lokal</h3>
+          <p>Dukungan dan pelatihan untuk UMKM</p>
+        </div>
+
+        <div class="potensi-card card" data-scroll-reveal>
+          <div class="potensi-icon">🎭</div>
+          <h3>Seni & Budaya</h3>
+          <p>Pelestarian tradisi dan festival lokal</p>
         </div>
       </div>
+
+      <p class="note mt-2 text-center">Keterangan: Potensi desa akan ditambahkan nanti</p>
     </div>
   </section>
 </BaseLayout>
@@ -271,6 +259,10 @@ const formatRupiah = (number: number) => {
   /* Hero Section */
   .hero-section {
     position: relative;
+    /* lift hero up so it visually touches the fixed navbar */
+    margin-top: calc(var(--header-height) * -1);
+    /* keep hero content visible below the header */
+    padding-top: var(--header-height);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -662,6 +654,40 @@ const formatRupiah = (number: number) => {
     .budget-stats {
       grid-template-columns: 1fr;
     }
+  }
+
+  /* Potensi Section */
+  .potensi-section {
+    padding: var(--spacing-2xl) 0;
+    background: transparent;
+  }
+
+  .potensi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .potensi-card {
+    padding: var(--spacing-md);
+    text-align: center;
+  }
+
+  .potensi-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .potensi-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .note {
+    color: var(--color-text);
+    opacity: 0.7;
+    font-size: 0.95rem;
   }
 </style>
 

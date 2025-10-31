@@ -2,7 +2,7 @@
 
 ## 1.1. Hero
 Terbagi 2 bagian utama
-Bagian pertama: Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser. Konten hero adalah teks kecil "Selamat datang" dan title "Web Desa Sendangan". Hero ini berukuran setengah 5/8 layar agar di bawahnya masih bisa terlihat bagian kedua.
+Bagian **pertama**: Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser. Konten hero adalah teks kecil "Selamat datang" dan title "Web Desa Sendangan". Hero ini berukuran setengah 5/8 layar agar di bawahnya masih bisa terlihat bagian kedua.
 Bagian kedua: Data singkat: Jumlah penduduk, Luas Wilayah, Jumlah Jaga
 
 ## 1.2. Jelajahi desa: beberapa menu penting
@@ -26,30 +26,39 @@ Disebelah kanan ada: teks "Sambutan Hukum Tua". Lalu sambutannya, dengan tombol 
 ## 1.6. Administrasi Penduduk
 - Data singkat administrasi penduduk, misal total penduduk, total kepala keluarga, dan lainnya.
 
-## 1.7. APBD Desa
-- Dikiri terdapat icon/logo uang, lalu di sebelah kanan terdapat data singkat APBD Desa, misal total anggaran, realisasi, dan lainnya.
+## 1.7. Potensi Desa
+- Kolam Air Panas (Direncanakan) - Wisata
+- Waruga - Situs Sejarah
+- Tukang Urut - UMKM
 
 # 2. Menu: Profil Desa
 
-## 2.1 Sejarah Desa
+## 2.1 Visi & Misi
 
-## 2.2 Peta dan Demografi
+## 2.2 Sejarah Desa
 
-## 2.3 Struktur Pemerintahan
+## 2.3 Peta dan Demografi
 
-# 3. Informasi Publik
+## 2.4 Struktur Pemerintahan
 
-## 3.1 Berita Desa
+## 2.5 Fasilitas Desa
 
-## 3.2 Pengumuman
+# 3. Informasi Publik (dropdown)
 
-## 3.3 Galeri
+## 3.1 Berita Desa (halman baru)
 
-# 4. Menu: Transparansi
+## 3.2 Pengumuman (halman baru)
 
-## 4.1 Transparansi APBDes
+## 3.3 Galeri (halman baru)
+
+# 4. APBDes
+
+## 4.1 APBDes:
+- Pendapatan desa
+- Belanja desa
 
 ## 4.2 Laporan Realisasi
+- Disajikan dalam judul dan link download pdf
 
 # 5. Potensi Desa
 
