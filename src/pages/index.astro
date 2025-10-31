@@ -1,0 +1,701 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CardPerson from '../components/CardPerson.astro';
+import data from '../data/data.json';
+
+const { perangkatDesa, statistik } = data;
+
+// Sample APBD data (can be moved to data.json later)
+const apbdData = {
+  totalAnggaran: 850000000,
+  realisasi: 650000000,
+  persentaseRealisasi: 76.5
+};
+
+// Format currency
+const formatRupiah = (number: number) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
+  }).format(number);
+};
+---
+
+<BaseLayout title="Desa Sendangan - Beranda">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-main">
+        <p class="hero-subtitle fade-in">Selamat Datang</p>
+        <h1 class="hero-title fade-in-up">Desa Sendangan</h1>
+        <p class="hero-description fade-in-up">Desa yang penuh kehangatan dan kekeluargaan di Kabupaten Minahasa</p>
+      </div>
+    </div>
+    
+    <!-- Quick Stats -->
+    <div class="quick-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card" data-scroll-reveal>
+            <div class="stat-icon">👥</div>
+            <div class="stat-content">
+              <h3 class="stat-number">{statistik.jumlahPenduduk}</h3>
+              <p class="stat-label">Jumlah Penduduk</p>
+            </div>
+          </div>
+          
+          <div class="stat-card" data-scroll-reveal>
+            <div class="stat-icon">📍</div>
+            <div class="stat-content">
+              <h3 class="stat-number">{statistik.luasWilayahHa} Ha</h3>
+              <p class="stat-label">Luas Wilayah</p>
+            </div>
+          </div>
+          
+          <div class="stat-card" data-scroll-reveal>
+            <div class="stat-icon">🏘️</div>
+            <div class="stat-content">
+              <h3 class="stat-number">{statistik.jumlahRT}</h3>
+              <p class="stat-label">Jumlah Jaga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jelajahi Desa Section -->
+  <section class="explore-section">
+    <div class="container">
+      <div class="explore-layout">
+        <div class="explore-header" data-scroll-reveal>
+          <h2>Jelajahi Desa<br/>Sendangan</h2>
+          <p class="section-description">Kenali lebih dekat berbagai aspek desa kami</p>
+        </div>
+        
+        <div class="explore-cards">
+          <a href="/profil" class="explore-card card" data-scroll-reveal>
+            <div class="explore-icon">🏛️</div>
+            <h3>Profil Desa</h3>
+            <p>Sejarah, demografi, dan informasi lengkap tentang desa</p>
+          </a>
+          
+          <a href="/informasi" class="explore-card card" data-scroll-reveal>
+            <div class="explore-icon">📢</div>
+            <h3>Informasi Publik</h3>
+            <p>Berita terkini, pengumuman, dan galeri kegiatan</p>
+          </a>
+          
+          <a href="/transparansi" class="explore-card card" data-scroll-reveal>
+            <div class="explore-icon">💰</div>
+            <h3>Transparansi</h3>
+            <p>Laporan keuangan dan realisasi APBDes</p>
+          </a>
+          
+          <a href="/potensi" class="explore-card card" data-scroll-reveal>
+            <div class="explore-icon">🌾</div>
+            <h3>Potensi Desa</h3>
+            <p>UMKM, wisata, seni dan budaya lokal</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sambutan Kepala Desa Section -->
+  <section class="greeting-section bg-secondary">
+    <div class="container">
+      <div class="greeting-layout">
+        <div class="greeting-image" data-scroll-reveal>
+          <img 
+            src={perangkatDesa[0].foto} 
+            alt={perangkatDesa[0].nama}
+            loading="lazy"
+          />
+        </div>
+        
+        <div class="greeting-content" data-scroll-reveal>
+          <p class="greeting-subtitle">Sambutan Hukum Tua</p>
+          <h2 class="greeting-title">{perangkatDesa[0].nama}</h2>
+          <div class="greeting-text">
+            <p>
+              Selamat datang di website resmi Desa Sendangan. Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat dan membangun desa yang lebih maju, sejahtera, dan bermartabat.
+            </p>
+            <p>
+              Melalui website ini, kami berharap dapat meningkatkan transparansi dan komunikasi dengan seluruh warga. Mari bersama-sama membangun Desa Sendangan yang lebih baik.
+            </p>
+          </div>
+          <a href="/profil#sejarah" class="btn btn-primary">
+            Profil Desa
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peta Desa Section (Placeholder) -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-header text-center" data-scroll-reveal>
+        <h2>Peta Desa Sendangan</h2>
+        <p class="section-description">Lokasi dan wilayah Desa Sendangan</p>
+      </div>
+      
+      <div class="map-placeholder card" data-scroll-reveal>
+        <div class="map-placeholder-content">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <p>Peta desa akan ditampilkan di sini</p>
+          <small>Segera hadir dengan informasi lokasi lengkap</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Struktur Organisasi Section -->
+  <section class="organization-section bg-secondary">
+    <div class="container">
+      <div class="section-header text-center" data-scroll-reveal>
+        <h2>Struktur Organisasi</h2>
+        <p class="section-description">Perangkat Desa Sendangan yang mengabdi untuk masyarakat</p>
+      </div>
+      
+      <div class="organization-grid">
+        {perangkatDesa.map((person, index) => (
+          <div data-scroll-reveal style={`animation-delay: ${index * 0.1}s`}>
+            <CardPerson 
+              nama={person.nama}
+              jabatan={person.jabatan}
+              foto={person.foto}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Administrasi Penduduk Section -->
+  <section class="demographics-section">
+    <div class="container">
+      <div class="section-header text-center" data-scroll-reveal>
+        <h2>Administrasi Penduduk</h2>
+        <p class="section-description">Data kependudukan Desa Sendangan</p>
+      </div>
+      
+      <div class="demographics-grid">
+        <div class="demographic-card card" data-scroll-reveal>
+          <div class="demographic-icon">👨‍👩‍👧‍👦</div>
+          <h3>{statistik.jumlahPenduduk}</h3>
+          <p>Total Penduduk</p>
+        </div>
+        
+        <div class="demographic-card card" data-scroll-reveal>
+          <div class="demographic-icon">🏠</div>
+          <h3>{statistik.jumlahRT}</h3>
+          <p>Jumlah RT/Jaga</p>
+        </div>
+        
+        <div class="demographic-card card" data-scroll-reveal>
+          <div class="demographic-icon">👶</div>
+          <h3>{statistik.proporsiUsia.anakAnak}%</h3>
+          <p>Anak-anak</p>
+        </div>
+        
+        <div class="demographic-card card" data-scroll-reveal>
+          <div class="demographic-icon">👨‍💼</div>
+          <h3>{statistik.proporsiUsia.dewasa}%</h3>
+          <p>Dewasa</p>
+        </div>
+        
+        <div class="demographic-card card" data-scroll-reveal>
+          <div class="demographic-icon">👴</div>
+          <h3>{statistik.proporsiUsia.lansia}%</h3>
+          <p>Lansia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APBD Section -->
+  <section class="budget-section bg-secondary">
+    <div class="container">
+      <div class="budget-layout">
+        <div class="budget-icon" data-scroll-reveal>
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+            <path d="M16.24 7.76a6 6 0 0 1-8.49 8.49"/>
+          </svg>
+        </div>
+        
+        <div class="budget-content" data-scroll-reveal>
+          <h2>APBDes Desa Sendangan</h2>
+          <p class="budget-subtitle">Transparansi Anggaran Pendapatan dan Belanja Desa</p>
+          
+          <div class="budget-stats">
+            <div class="budget-stat">
+              <p class="budget-stat-label">Total Anggaran</p>
+              <h3 class="budget-stat-value">{formatRupiah(apbdData.totalAnggaran)}</h3>
+            </div>
+            
+            <div class="budget-stat">
+              <p class="budget-stat-label">Realisasi</p>
+              <h3 class="budget-stat-value text-primary">{formatRupiah(apbdData.realisasi)}</h3>
+            </div>
+            
+            <div class="budget-stat">
+              <p class="budget-stat-label">Persentase Realisasi</p>
+              <h3 class="budget-stat-value">{apbdData.persentaseRealisasi}%</h3>
+            </div>
+          </div>
+          
+          <a href="/transparansi" class="btn btn-accent mt-2">
+            Lihat Detail Transparansi
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 62.5vh;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/foto/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+  }
+
+  .hero-main {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 800px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    animation-delay: 0.2s;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    animation-delay: 0.4s;
+  }
+
+  /* Quick Stats */
+  .quick-stats {
+    background: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-secondary);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .stat-icon {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.8;
+  }
+
+  /* Explore Section */
+  .explore-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .explore-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .explore-header h2 {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-top: var(--spacing-sm);
+  }
+
+  .explore-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .explore-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .explore-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .explore-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .explore-card p {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  /* Greeting Section */
+  .greeting-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .greeting-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .greeting-image {
+    position: relative;
+  }
+
+  .greeting-image img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-medium);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+
+  .greeting-subtitle {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+  }
+
+  .greeting-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .greeting-text {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .greeting-text p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+  }
+
+  /* Map Section */
+  .map-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .map-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .map-placeholder {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-secondary);
+  }
+
+  .map-placeholder-content {
+    text-align: center;
+    color: var(--color-text);
+    opacity: 0.6;
+  }
+
+  .map-placeholder-content svg {
+    margin: 0 auto var(--spacing-md);
+    stroke: var(--color-primary);
+  }
+
+  .map-placeholder-content p {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .map-placeholder-content small {
+    font-size: 0.875rem;
+  }
+
+  /* Organization Section */
+  .organization-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .section-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .organization-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  /* Demographics Section */
+  .demographics-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .demographics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+
+  .demographic-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .demographic-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .demographic-card h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .demographic-card p {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  /* Budget Section */
+  .budget-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .budget-layout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .budget-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .budget-icon svg {
+    stroke: var(--color-accent);
+  }
+
+  .budget-content h2 {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .budget-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .budget-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .budget-stat {
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .budget-stat-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .budget-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 968px) {
+    .explore-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .explore-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .greeting-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .budget-layout {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .budget-icon {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .explore-cards {
+      gap: var(--spacing-sm);
+    }
+
+    .demographics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .budget-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Scroll Reveal Animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-scroll-reveal]').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>

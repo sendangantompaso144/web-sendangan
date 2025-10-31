@@ -1,0 +1,111 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h3>Desa Sendangan</h3>
+        <p>Desa yang penuh kehangatan dan kekeluargaan di Kabupaten Minahasa, Sulawesi Utara.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Menu Cepat</h4>
+        <ul>
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/profil">Profil Desa</a></li>
+          <li><a href="/informasi">Informasi</a></li>
+          <li><a href="/transparansi">Transparansi</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Kontak</h4>
+        <ul>
+          <li>📍 Desa Sendangan, Kec. Tompaso</li>
+          <li>📞 (0431) XXXXXX</li>
+          <li>✉️ info@desasendangan.id</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Desa Sendangan. Dibuat dengan ❤️ untuk warga.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-text);
+    color: var(--color-white);
+    padding: var(--spacing-2xl) 0 var(--spacing-md);
+    margin-top: var(--spacing-2xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-about h3,
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+  }
+
+  .footer-about p {
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  .footer-links ul,
+  .footer-contact ul {
+    list-style: none;
+  }
+
+  .footer-links li,
+  .footer-contact li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-links a {
+    opacity: 0.9;
+    transition: all 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
+    color: var(--color-accent);
+    padding-left: var(--spacing-xs);
+  }
+
+  .footer-contact li {
+    opacity: 0.9;
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+
+  .footer-bottom {
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    opacity: 0.8;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>

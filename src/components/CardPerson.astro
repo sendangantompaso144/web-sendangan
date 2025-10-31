@@ -1,0 +1,66 @@
+---
+interface Props {
+  nama: string;
+  jabatan: string;
+  foto: string;
+}
+
+const { nama, jabatan, foto } = Astro.props;
+---
+
+<div class="person-card card">
+  <div class="person-image">
+    <img src={foto} alt={nama} loading="lazy" />
+  </div>
+  <div class="person-info">
+    <h3 class="person-name">{nama}</h3>
+    <p class="person-position">{jabatan}</p>
+  </div>
+</div>
+
+<style>
+  .person-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .person-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .person-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--color-secondary);
+  }
+
+  .person-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .person-card:hover .person-image img {
+    transform: scale(1.05);
+  }
+
+  .person-info {
+    padding: var(--spacing-md);
+    text-align: center;
+  }
+
+  .person-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .person-position {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>

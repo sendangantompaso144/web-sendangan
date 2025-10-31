@@ -1,20 +1,33 @@
 # 1. Home
 
-## 1. Hero
-- Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser
-- Data singkat: Jumlah penduduk, Luas Wilayah, Jumlah Jaga
+## 1.1. Hero
+Terbagi 2 bagian utama
+Bagian pertama: Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser. Hero ini berukuran setengah 5/8 layar agar di bawahnya masih bisa terlihat bagian kedua.
+Bagian kedua: Data singkat: Jumlah penduduk, Luas Wilayah, Jumlah Jaga
 
-## 2. Jelajahi desa: beberapa menu penting (termasuk dari navbar)
+## 1.2. Jelajahi desa: beberapa menu penting
+Judul: Jelajahi Desa Sendangan (disebelah kiri)
+Card di sebelah kanan:
+- Profil Desa
+- Informasi Publik
+- Transparansi
+- Potensi Desa
 
-## 3. Sambutan kepala desa
+## 1.3. Sambutan kepala desa
+Foto kepala desa di sebelah kiri, 
+Disebelah kanan ada: teks "Sambutan Hukum Tua". Lalu sambutannya, dengan tombol "Profil desa" yang mengarah ke halaman Profil Desa.
 
-## 4. Peta desa
+## 1.4. Peta desa
+- Masih belum, sisakan ruang untuk peta desa di bagian ini.
 
-## 5. Struktur Organisasi
+## 1.5. Struktur Organisasi
+- Foto perangkat desa barupa card grid, dengan nama dan jabatan.
 
-## 6. Administrasi Penduduk
+## 1.6. Administrasi Penduduk
+- Data singkat administrasi penduduk, misal total penduduk, total kepala keluarga, dan lainnya.
 
-## 7. APBD Desa
+## 1.7. APBD Desa
+- Dikiri terdapat icon/logo uang, lalu di sebelah kanan terdapat data singkat APBD Desa, misal total anggaran, realisasi, dan lainnya.
 
 # 2. Menu: Profil Desa
 

@@ -3,12 +3,12 @@
     {
       "nama": "Johny R. Mandagi",
       "jabatan": "Kepala Desa",
-      "foto": "/images/foto/kepala_desa.jpg"
+      "foto": "/images/foto/kepala_desa.svg"
     },
     {
       "nama": "Maria S. Wenas",
       "jabatan": "Sekretaris Desa",
-      "foto": "/images/foto/sekdes.jpg"
+      "foto": "/images/foto/sekdes.svg"
     }
   ],
 

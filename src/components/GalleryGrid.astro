@@ -1,0 +1,123 @@
+---
+interface GalleryItem {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+  columns?: number;
+}
+
+const { items, columns = 3 } = Astro.props;
+---
+
+<div class={`gallery-grid grid-${columns}`}>
+  {items.map((item) => (
+    <div class="gallery-item card" data-scroll-reveal>
+      <div class="gallery-image">
+        <img src={item.src} alt={item.alt} loading="lazy" />
+      </div>
+      {item.caption && (
+        <div class="gallery-caption">
+          <p>{item.caption}</p>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+
+  .gallery-grid.grid-2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .gallery-grid.grid-3 {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .gallery-grid.grid-4 {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .gallery-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--color-secondary);
+  }
+
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover .gallery-image img {
+    transform: scale(1.1);
+  }
+
+  .gallery-caption {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-white);
+  }
+
+  .gallery-caption p {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid.grid-2,
+    .gallery-grid.grid-3,
+    .gallery-grid.grid-4 {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid.grid-2,
+    .gallery-grid.grid-3,
+    .gallery-grid.grid-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Optional: Add lightbox functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (img) {
+          // Here you can implement lightbox functionality
+          // For now, just open image in new tab
+          window.open(img.src, '_blank');
+        }
+      });
+    });
+  });
+</script>
