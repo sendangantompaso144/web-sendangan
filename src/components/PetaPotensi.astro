@@ -30,53 +30,104 @@
 
       const L = await loadLeaflet();
 
-      // Fetch potensi data from public folder
-      const resp = await fetch('/data/potensi.json');
-      if (!resp.ok) throw new Error('Gagal mengambil data potensi');
-      const potensiData = await resp.json();
+      // Use custom image as map background (CRS.Simple)
+      // Image must be placed under `public/` (you said: /public/images/map_potensi_desa.jpg)
+      const IMAGE_URL = '/images/map_potensi_desa.jpg';
 
       const mapContainer = document.getElementById('map');
       if (!mapContainer) throw new Error('Map container not found');
-
-      // Clear loading text
       mapContainer.innerHTML = '';
 
-      // Initialize map
-      const map = L.map(mapContainer).setView([-1.259, 124.901], 13);
-
-      // Add OpenStreetMap tile layer
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-
-      // Small marker icon (uses Leaflet default marker from CDN)
-      const defaultIcon = L.icon({
-        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-        iconSize: [22, 36],
-        iconAnchor: [11, 36],
-        popupAnchor: [1, -30]
+      // Load image to get dimensions
+      const imgSize = await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = IMAGE_URL;
+        img.onload = () => resolve({ width: img.width, height: img.height });
+        img.onerror = () => reject(new Error('Gagal memuat gambar peta'));
       });
 
-      // Add markers from data
-      potensiData.forEach((potensi) => {
-        try {
-          const marker = L.marker(potensi.koordinat, { icon: defaultIcon }).addTo(map);
+      const w = imgSize.width;
+      const h = imgSize.height;
 
-          const imgHtml = potensi.gambar ? `<img src="${potensi.gambar}" alt="${potensi.nama}" style="width:100%;height:auto;border-radius:8px;margin-top:6px;" />` : '';
+      // Create map with CRS.Simple so coordinates match image pixels
+      const map = L.map(mapContainer, {
+        crs: L.CRS.Simple,
+        minZoom: -5,
+        maxZoom: 2,
+        zoomSnap: 0.25
+      });
 
-          marker.bindPopup(`
-            <div style="text-align:left; max-width:240px;">
-              <strong>${potensi.nama}</strong>
-              <p style="margin:6px 0 0 0; font-size:0.95rem;">${potensi.deskripsi}</p>
-              ${imgHtml}
-            </div>
-          `);
-        } catch (err) {
-          console.warn('Failed to add marker for', potensi, err);
+      // Image bounds: top-left [0,0], bottom-right [h, w] (y, x)
+      const imageBounds = [[0, 0], [h, w]];
+
+      // Add image overlay
+      L.imageOverlay(IMAGE_URL, imageBounds).addTo(map);
+
+      // Restrict map to image bounds so user cannot pan outside
+      map.setMaxBounds(imageBounds);
+      map.fitBounds(imageBounds);
+
+      // Show current zoom controls
+      L.control.zoom({ position: 'topright' }).addTo(map);
+
+      // Show coordinates on click to help you place markers later
+      map.on('click', (e) => {
+        // For CRS.Simple, lat = y, lng = x in pixel units relative to image
+        const x = Number(e.latlng.lng.toFixed(3));
+        const y = Number(e.latlng.lat.toFixed(3));
+        const popup = L.popup()
+          .setLatLng(e.latlng)
+          .setContent(`<div style="font-size:0.95rem">Koordinat gambar: <code>[${x}, ${y}]</code><br/><button id=\"copy-coords\">Salin</button></div>`)
+          .openOn(map);
+
+        // attach copy handler after popup added
+        setTimeout(() => {
+          const btn = document.getElementById('copy-coords');
+          if (btn) btn.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(`${x},${y}`);
+              btn.textContent = 'Disalin';
+            } catch (err) {
+              btn.textContent = 'Gagal';
+            }
+          });
+        }, 50);
+      });
+
+      // Load markers from public data (coordinates expected as [x, y] pixels)
+      try {
+        const resp = await fetch('/data/potensi.json');
+        if (resp.ok) {
+          const markers = await resp.json();
+          const defaultIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+            shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+            iconSize: [22, 36],
+            iconAnchor: [11, 36],
+            popupAnchor: [1, -30]
+          });
+
+          markers.forEach((p) => {
+            if (!Array.isArray(p.koordinat) || p.koordinat.length < 2) return;
+            const x = Number(p.koordinat[0]);
+            const y = Number(p.koordinat[1]);
+            // In CRS.Simple, lat = y, lng = x
+            const latlng = [y, x];
+            const marker = L.marker(latlng, { icon: defaultIcon }).addTo(map);
+            const imgHtml = p.gambar ? `<img src="${p.gambar}" alt="${p.nama}" style="width:100%;height:auto;border-radius:8px;margin-top:6px;" />` : '';
+            marker.bindPopup(`
+              <div style="text-align:left; max-width:240px;">
+                <strong>${p.nama}</strong>
+                <p style="margin:6px 0 0 0; font-size:0.95rem;">${p.deskripsi || ''}</p>
+                ${imgHtml}
+              </div>
+            `);
+          });
         }
-      });
+      } catch (err) {
+        console.warn('Could not load markers:', err);
+      }
 
     } catch (error) {
       console.error('Error loading map:', error);

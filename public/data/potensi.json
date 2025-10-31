@@ -1,4 +1,23 @@
 [
-  { "nama": "Air Terjun Rerewokan", "kategori": "Wisata", "koordinat": [-1.259, 124.901], "deskripsi": "Wisata alam", "gambar": "/images/potensi/airterjun.jpg" },
-  { "nama": "Perkebunan Kopi Sendangan", "kategori": "Pertanian", "koordinat": [-1.255, 124.894], "deskripsi": "Lahan kopi rakyat", "gambar": "/images/potensi/kopi.jpg" }
+  {
+    "nama": "Situs Waruga",
+    "kategori": "Sejarah",
+    "koordinat": [256.6, 179.6],
+    "deskripsi": "Batu waruga peninggalan sejarah",
+    "gambar": "/images/potensi/waruga.jpg"
+  },
+  {
+    "nama": "Kolam Air Panas",
+    "kategori": "Wisata",
+    "koordinat": [208.6, 189.6],
+    "deskripsi": "Kolam air panas alami",
+    "gambar": "/images/potensi/airpanas.jpg"
+  },
+  {
+    "nama": "UMKM Tukang Pijat/Urut",
+    "kategori": "UMKM",
+    "koordinat": [709.4, 487.9],
+    "deskripsi": "Jasa pijat tradisional lokal",
+    "gambar": "/images/potensi/pijat.jpg"
+  }
 ]
