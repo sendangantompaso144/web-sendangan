@@ -2,7 +2,7 @@
 
 ## 1.1. Hero
 Terbagi 2 bagian utama
-Bagian pertama: Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser. Hero ini berukuran setengah 5/8 layar agar di bawahnya masih bisa terlihat bagian kedua.
+Bagian pertama: Hero utama: Selamat datang dan lainnya; dapat digeser dengan teks yang ikut tergeser. Konten hero adalah teks kecil "Selamat datang" dan title "Web Desa Sendangan". Hero ini berukuran setengah 5/8 layar agar di bawahnya masih bisa terlihat bagian kedua.
 Bagian kedua: Data singkat: Jumlah penduduk, Luas Wilayah, Jumlah Jaga
 
 ## 1.2. Jelajahi desa: beberapa menu penting
