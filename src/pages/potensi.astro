@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PetaPotensi from '../components/PetaPotensi.astro';
+---
+
+<BaseLayout title="Potensi Desa">
+  <section class="potensi-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Potensi Desa</h2>
+        <p class="section-description">Potensi dan peluang Desa Sendangan</p>
+      </div>
+
+      <!-- Include the interactive map component -->
+      <PetaPotensi />
+    </div>
+  </section>
+</BaseLayout>

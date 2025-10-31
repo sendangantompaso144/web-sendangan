@@ -1,0 +1,102 @@
+---
+// PetaPotensi.astro — client-only map using Leaflet via CDN
+---
+
+<div id="map" style="height:500px; width:100%; border-radius:8px;">
+  <p style="text-align:center;">Memuat peta...</p>
+</div>
+
+<script client:load>
+  (async () => {
+    try {
+      // Load Leaflet CSS (CDN) if not present
+      if (!document.querySelector('link[data-leaflet-cdn]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        link.setAttribute('data-leaflet-cdn', '');
+        document.head.appendChild(link);
+      }
+
+      // Load Leaflet JS via script tag and wait until it's available as window.L
+      const loadLeaflet = () => new Promise((resolve, reject) => {
+        if (window.L && window.L.map) return resolve(window.L);
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        script.onload = () => resolve(window.L);
+        script.onerror = (e) => reject(new Error('Failed to load Leaflet script'));
+        document.body.appendChild(script);
+      });
+
+      const L = await loadLeaflet();
+
+      // Fetch potensi data from public folder
+      const resp = await fetch('/data/potensi.json');
+      if (!resp.ok) throw new Error('Gagal mengambil data potensi');
+      const potensiData = await resp.json();
+
+      const mapContainer = document.getElementById('map');
+      if (!mapContainer) throw new Error('Map container not found');
+
+      // Clear loading text
+      mapContainer.innerHTML = '';
+
+      // Initialize map
+      const map = L.map(mapContainer).setView([-1.259, 124.901], 13);
+
+      // Add OpenStreetMap tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Small marker icon (uses Leaflet default marker from CDN)
+      const defaultIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [22, 36],
+        iconAnchor: [11, 36],
+        popupAnchor: [1, -30]
+      });
+
+      // Add markers from data
+      potensiData.forEach((potensi) => {
+        try {
+          const marker = L.marker(potensi.koordinat, { icon: defaultIcon }).addTo(map);
+
+          const imgHtml = potensi.gambar ? `<img src="${potensi.gambar}" alt="${potensi.nama}" style="width:100%;height:auto;border-radius:8px;margin-top:6px;" />` : '';
+
+          marker.bindPopup(`
+            <div style="text-align:left; max-width:240px;">
+              <strong>${potensi.nama}</strong>
+              <p style="margin:6px 0 0 0; font-size:0.95rem;">${potensi.deskripsi}</p>
+              ${imgHtml}
+            </div>
+          `);
+        } catch (err) {
+          console.warn('Failed to add marker for', potensi, err);
+        }
+      });
+
+    } catch (error) {
+      console.error('Error loading map:', error);
+      const mapContainer = document.getElementById('map');
+      if (mapContainer) {
+        mapContainer.innerHTML = '<p style="text-align:center;color:red;">Peta gagal ditampilkan</p>';
+      }
+    }
+  })();
+</script>
+
+<style>
+  #map {
+    height: 500px;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  /* Make sure Leaflet's default styles don't get overridden */
+  .leaflet-container {
+    border-radius: 8px;
+  }
+</style>

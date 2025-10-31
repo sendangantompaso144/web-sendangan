@@ -43,6 +43,8 @@ Disebelah kanan ada: teks "Sambutan Hukum Tua". Lalu sambutannya, dengan tombol 
 
 ## 2.5 Fasilitas Desa
 
+## 2.6 Program desa
+
 # 3. Informasi Publik (dropdown)
 
 ## 3.1 Berita Desa (halman baru)
